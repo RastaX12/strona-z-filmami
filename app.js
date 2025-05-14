@@ -13,6 +13,7 @@ let currentCategory = "popular";
 async function fetchMovies(category) {
   const response = await fetch(`${API_URL}movie/${category}?api_key=${TMDB_API_KEY}&language=pl-PL`);
   const data = await response.json();
+  console.log(data);  // Sprawdzenie odpowiedzi API w konsoli
   displayMovies(data.results);
 }
 
@@ -20,53 +21,4 @@ async function fetchMovies(category) {
 async function searchMovies(query) {
   const response = await fetch(`${API_URL}search/movie?api_key=${TMDB_API_KEY}&language=pl-PL&query=${query}`);
   const data = await response.json();
-  displayMovies(data.results);
-}
-
-// Display movies on the page
-function displayMovies(movies) {
-  movieContainer.innerHTML = "";
-  if (movies.length === 0) {
-    movieContainer.innerHTML = "Brak wyników";
-  } else {
-    movies.forEach(movie => {
-      const movieElement = document.getElementById("movieTemplate").content.cloneNode(true);
-      movieElement.querySelector(".poster").src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-      movieElement.querySelector(".title").textContent = movie.title;
-      movieElement.querySelector(".year").textContent = new Date(movie.release_date).getFullYear();
-      movieElement.querySelector(".watch-btn").addEventListener("click", () => openLocker());
-      movieContainer.appendChild(movieElement);
-    });
-  }
-}
-
-// Open content locker modal
-function openLocker() {
-  modal.classList.add("show");
-}
-
-// Close content locker modal
-closeModal.addEventListener("click", () => {
-  modal.classList.remove("show");
-});
-
-// Set up category click event
-categoryList.addEventListener("click", (event) => {
-  if (event.target && event.target.matches("li[data-category]") && event.target.dataset.category !== currentCategory) {
-    currentCategory = event.target.dataset.category;
-    fetchMovies(currentCategory);
-  }
-});
-
-// Set up search input event
-searchInput.addEventListener("input", (event) => {
-  const query = event.target.value;
-  if (query.length >= 3) {
-    searchMovies(query);
-  } else if (query.length === 0) {
-    fetchMovies(currentCategory);
-  }
-});
-
-// Fetch popular movies by default
-fetchMovies(currentCategory
+  console.log(data);  //
