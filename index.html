@@ -10,12 +10,28 @@
 <body>
   <header>
     <h1>Filmy Online</h1>
-    <input type="text" id="searchInput" placeholder="Szukaj filmu...">
   </header>
 
-  <main id="movieContainer">
-    <!-- Tu pojawią się filmy -->
-  </main>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>Kategorie</h2>
+      <ul id="categoryList">
+        <li data-category="popular">Popularne</li>
+        <li data-category="top_rated">Najlepiej oceniane</li>
+        <li data-category="now_playing">W kinach</li>
+        <li data-category="upcoming">Nadchodzące</li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Szukaj filmu...">
+      </div>
+      <main id="movieContainer">
+        <!-- Tu pojawią się filmy -->
+      </main>
+    </section>
+  </div>
 
   <template id="movieTemplate">
     <div class="movie">
