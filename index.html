@@ -5,6 +5,134 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Filmy Online - Fejkowy Serwis VOD</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #141414;
+      color: #fff;
+    }
+
+    header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 200px;
+      background-color: #1f1f1f;
+      padding: 20px;
+    }
+
+    .sidebar h2 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 10px;
+      cursor: pointer;
+      color: #ccc;
+    }
+
+    .sidebar li:hover {
+      color: #fff;
+    }
+
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    .search-box {
+      margin-bottom: 20px;
+    }
+
+    #searchInput {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #movieContainer {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .movie {
+      background-color: #222;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .movie img.poster {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .watch-btn {
+      margin-top: 10px;
+      background-color: red;
+      border: none;
+      padding: 8px 12px;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      color: #000;
+      padding: 20px;
+      border-radius: 8px;
+      position: relative;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .modal-content iframe {
+      border: none;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    #closeModal {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+  </style>
   <script defer src="app.js"></script>
 </head>
 <body>
@@ -50,9 +178,5 @@
       <iframe src="https://your-cpa-locker-link.com" width="100%" height="500" style="border:none;"></iframe>
     </div>
   </div>
-
-  <script>
-    const TMDB_API_KEY = "c8d2a5be394f106d0d73cdbf5f13d927";
-  </script>
 </body>
 </html>
