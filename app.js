@@ -1,74 +1,72 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const API_KEY = "c8d2a5be394f106d0d73cdbf5f13d927";
-  const BASE_URL = "https://api.themoviedb.org/3";
-  const IMG_BASE_URL = "https://image.tmdb.org/t/p/w500";
+const TMDB_API_KEY = "c8d2a5be394f106d0d73cdbf5f13d927";
+const API_URL = "https://api.themoviedb.org/3/";
 
-  const movieContainer = document.getElementById("movieContainer");
-  const movieTemplate = document.getElementById("movieTemplate");
-  const searchInput = document.getElementById("searchInput");
+const movieContainer = document.getElementById("movieContainer");
+const searchInput = document.getElementById("searchInput");
+const categoryList = document.getElementById("categoryList");
+const modal = document.getElementById("lockerModal");
+const closeModal = document.getElementById("closeModal");
 
-  const modal = document.getElementById("lockerModal");
-  const closeModal = document.getElementById("closeModal");
+let currentCategory = "popular";
 
-  closeModal.addEventListener("click", () => {
-    modal.classList.add("hidden");
-  });
+// Fetch movies by category or search term
+async function fetchMovies(category) {
+  const response = await fetch(`${API_URL}movie/${category}?api_key=${TMDB_API_KEY}&language=pl-PL`);
+  const data = await response.json();
+  displayMovies(data.results);
+}
 
-  document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("watch-btn")) {
-      modal.classList.remove("hidden");
-    }
-  });
+// Fetch movies by search term
+async function searchMovies(query) {
+  const response = await fetch(`${API_URL}search/movie?api_key=${TMDB_API_KEY}&language=pl-PL&query=${query}`);
+  const data = await response.json();
+  displayMovies(data.results);
+}
 
-  async function fetchMoviesByCategory(category) {
-    const res = await fetch(
-      `${BASE_URL}/movie/${category}?api_key=${API_KEY}&language=pl-PL`
-    );
-    const data = await res.json();
-    return data.results;
-  }
-
-  async function loadMovies() {
-    const categories = ["popular", "top_rated", "now_playing", "upcoming"];
-    let allMovies = [];
-
-    for (const cat of categories) {
-      const movies = await fetchMoviesByCategory(cat);
-      allMovies = [...allMovies, ...movies];
-    }
-
-    displayMovies(allMovies);
-  }
-
-  function displayMovies(movies) {
-    movieContainer.innerHTML = "";
-
-    movies.forEach((movie) => {
-      if (!movie.poster_path) return;
-
-      const clone = movieTemplate.content.cloneNode(true);
-      clone.querySelector(".poster").src = IMG_BASE_URL + movie.poster_path;
-      clone.querySelector(".title").textContent = movie.title;
-      clone.querySelector(".year").textContent =
-        "Rok: " + (movie.release_date?.split("-")[0] || "brak");
-      movieContainer.appendChild(clone);
+// Display movies on the page
+function displayMovies(movies) {
+  movieContainer.innerHTML = "";
+  if (movies.length === 0) {
+    movieContainer.innerHTML = "Brak wyników";
+  } else {
+    movies.forEach(movie => {
+      const movieElement = document.getElementById("movieTemplate").content.cloneNode(true);
+      movieElement.querySelector(".poster").src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+      movieElement.querySelector(".title").textContent = movie.title;
+      movieElement.querySelector(".year").textContent = new Date(movie.release_date).getFullYear();
+      movieElement.querySelector(".watch-btn").addEventListener("click", () => openLocker());
+      movieContainer.appendChild(movieElement);
     });
   }
+}
 
-  searchInput.addEventListener("input", async function () {
-    const query = this.value.trim();
+// Open content locker modal
+function openLocker() {
+  modal.classList.add("show");
+}
 
-    if (query.length < 2) return loadMovies();
-
-    const res = await fetch(
-      `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
-        query
-      )}&language=pl-PL`
-    );
-    const data = await res.json();
-
-    displayMovies(data.results);
-  });
-
-  loadMovies();
+// Close content locker modal
+closeModal.addEventListener("click", () => {
+  modal.classList.remove("show");
 });
+
+// Set up category click event
+categoryList.addEventListener("click", (event) => {
+  if (event.target && event.target.matches("li[data-category]") && event.target.dataset.category !== currentCategory) {
+    currentCategory = event.target.dataset.category;
+    fetchMovies(currentCategory);
+  }
+});
+
+// Set up search input event
+searchInput.addEventListener("input", (event) => {
+  const query = event.target.value;
+  if (query.length >= 3) {
+    searchMovies(query);
+  } else if (query.length === 0) {
+    fetchMovies(currentCategory);
+  }
+});
+
+// Fetch popular movies by default
+fetchMovies(currentCategory
