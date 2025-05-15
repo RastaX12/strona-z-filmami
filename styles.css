@@ -171,6 +171,24 @@ p strong {
   max-height: 80px;
   width: auto;
 }
+    .main-header {
+  background-color: #111;
+  padding: 30px 0;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.site-logo {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.site-logo span {
+  color: #ff3c00; /* Kinowy pomarańczowy */
+}
 
     padding: 15px;
     font-size: 1.2rem;
