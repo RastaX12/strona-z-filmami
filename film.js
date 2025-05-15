@@ -1,4 +1,4 @@
-const apiKey = 'YOUR_TMDB_API_KEY'; // zamień na swój klucz TMDb
+const apiKey = 'c8d2a5be394f106d0d73cdbf5f13d927'; // zamień na swój klucz TMDb
 const urlParams = new URLSearchParams(window.location.search);
 const movieId = urlParams.get('id');
 
