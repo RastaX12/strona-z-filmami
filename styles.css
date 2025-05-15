@@ -1,113 +1,135 @@
-/* Ogólne style */
-
-body {
-  background-color: #111;
-  color: #fff;
-  font-family: Arial, sans-serif;
+/* Resetowanie domyślnych stylów */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #141414;
+  color: #fff;
+  line-height: 1.5;
+  padding: 20px;
+}
+
+header {
   text-align: center;
+  margin-bottom: 30px;
 }
 
-/* Nagłówek i logo */
-
-.main-header {
-  background-color: #222;
-  padding: 20px 0;
-}
-
-.site-logo {
+h1 {
   font-size: 3rem;
-  font-weight: bold;
-  color: #ff3c00;
-  text-shadow:
-    -2px -2px 0 #000,
-    2px -2px 0 #000,
-    -2px 2px 0 #000,
-    2px 2px 0 #000;
-}
-
-.site-logo span {
   color: #fff;
-  text-shadow: none;
 }
 
-/* Kategorie */
+#searchInput {
+  width: 50%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: #333;
+  color: #fff;
+}
 
-.categories {
-  margin: 20px 0;
+#searchInput::placeholder {
+  color: #888;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #fff;
+  margin-top: 40px;
+  text-transform: capitalize;
+}
+
+.movie {
+  width: calc(25% - 20px);
+  background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.movie:hover {
+  transform: scale(1.05);
+}
+
+.poster {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.title {
+  font-size: 1.2rem;
+  margin: 10px;
   text-align: center;
 }
 
-.categories-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 10px 0;
-}
-
-.category-item {
-  width: 100px;
-  cursor: pointer;
-}
-
-.category-item img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-}
-
-.category-item span {
-  display: block;
-  margin-top: 8px;
+.year {
   font-size: 1rem;
-  color: #fff;
-}
-
-/* Główna zawartość */
-
-.content {
-  margin: 30px 20px;
-}
-
-.content h2 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-}
-
-.content p {
-  font-size: 1.1rem;
-  margin-bottom: 25px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
+  color: #ccc;
 }
 
 .watch-btn {
-  display: inline-block;
-  background-color: #ff3c00;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #e50914;
   color: #fff;
-  padding: 12px 30px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 30px;
-  box-shadow:
-    0 0 10px #ff3c00,
-    0 0 20px #ff3c00;
+  border: none;
+  border-radius: 0 0 10px 10px;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .watch-btn:hover {
-  background-color: #e63600;
+  background-color: #b20710;
 }
 
-/* Stopka */
+/* Modal content locker */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
 
-footer {
-  background-color: #222;
-  color: #aaa;
-  padding: 20px 0;
-  margin-top: 40px;
-  font-size: 0.9rem;
+.modal-content {
+  background-color: #333;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 600px;
+  width: 80%;
+}
+
+#closeModal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
