@@ -1,155 +1,113 @@
-/* Reset */
-* {
+/* Ogólne style */
+
+body {
+  background-color: #111;
+  color: #fff;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-/* Body */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #0d0d0d;
-  color: #fff;
-  line-height: 1.6;
   text-align: center;
 }
 
-/* Header with text logo */
+/* Nagłówek i logo */
+
 .main-header {
-  background-color: #111;
-  padding: 30px 0;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.6);
-  position: relative;
-  z-index: 10;
+  background-color: #222;
+  padding: 20px 0;
 }
 
 .site-logo {
-  font-size: 2.8rem;
-  font-weight: 900;
-  color: white;
-  letter-spacing: 1px;
-
-  /* czarna obwódka */
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ff3c00;
   text-shadow:
     -2px -2px 0 #000,
     2px -2px 0 #000,
     -2px 2px 0 #000,
     2px 2px 0 #000;
-  margin: 0;
 }
 
 .site-logo span {
-  color: #ff3c00;
-  text-shadow:
-    -2px -2px 0 #000,
-    2px -2px 0 #000,
-    -2px 2px 0 #000,
-    2px 2px 0 #000;
-}
-
-/* Categories section */
-.categories {
-  padding: 20px;
-  background-color: #111;
   color: #fff;
-  margin: 20px 0;
+  text-shadow: none;
 }
 
-.categories h2 {
-  margin-bottom: 15px;
-  font-size: 1.5rem;
-  color: #ff3c00;
-  font-weight: bold;
-  text-align: left;
-  padding-left: 20px;
+/* Kategorie */
+
+.categories {
+  margin: 20px 0;
+  text-align: center;
 }
 
 .categories-container {
   display: flex;
-  overflow-x: auto;
-  gap: 15px;
-  padding: 10px 20px 10px 20px;
-  scrollbar-width: thin;
-  scrollbar-color: #ff3c00 transparent;
-}
-
-.categories-container::-webkit-scrollbar {
-  height: 8px;
-}
-
-.categories-container::-webkit-scrollbar-thumb {
-  background-color: #ff3c00;
-  border-radius: 4px;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 10px 0;
 }
 
 .category-item {
-  flex: 0 0 auto;
   width: 100px;
-  text-align: center;
   cursor: pointer;
-  transition: transform 0.3s ease;
 }
 
 .category-item img {
   width: 80px;
   height: 80px;
   object-fit: contain;
-  margin-bottom: 8px;
-  filter: brightness(0) invert(1);
-  transition: filter 0.3s ease;
 }
 
 .category-item span {
   display: block;
+  margin-top: 8px;
   font-size: 1rem;
   color: #fff;
 }
 
-.category-item:hover {
-  transform: scale(1.1);
-}
+/* Główna zawartość */
 
-.category-item:hover img {
-  filter: brightness(0) invert(0.7) sepia(1) saturate(5) hue-rotate(10deg);
-}
-
-/* Main content */
 .content {
-  padding: 60px 20px;
+  margin: 30px 20px;
 }
 
 .content h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
-  color: #ff3c00;
+  margin-bottom: 15px;
 }
 
 .content p {
   font-size: 1.1rem;
+  margin-bottom: 25px;
   max-width: 600px;
-  margin: 0 auto 30px;
-  color: #ccc;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .watch-btn {
-  padding: 15px 30px;
-  background: #ff3c00;
-  color: white;
+  display: inline-block;
+  background-color: #ff3c00;
+  color: #fff;
+  padding: 12px 30px;
   text-decoration: none;
-  border-radius: 6px;
   font-weight: bold;
-  transition: background 0.3s ease;
+  border-radius: 30px;
+  box-shadow:
+    0 0 10px #ff3c00,
+    0 0 20px #ff3c00;
+  transition: background-color 0.3s ease;
 }
 
 .watch-btn:hover {
-  background: #e63200;
+  background-color: #e63600;
 }
 
-/* Footer */
+/* Stopka */
+
 footer {
-  padding: 20px;
-  background: #111;
-  color: #777;
+  background-color: #222;
+  color: #aaa;
+  padding: 20px 0;
+  margin-top: 40px;
   font-size: 0.9rem;
 }
