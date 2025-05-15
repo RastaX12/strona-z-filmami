@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WatchRealm – Movie Streaming</title>
+  <title>WatchRealm – Movies</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,40 +11,32 @@
     <h1 class="site-logo">Watch<span>Realm</span></h1>
   </header>
 
-  <section class="categories">
-    <h2>Categories</h2>
-    <div class="categories-container">
-      <div class="category-item">
-        <img src="icons/action.svg" alt="Action" />
-        <span>Action</span>
-      </div>
-      <div class="category-item">
-        <img src="icons/drama.svg" alt="Drama" />
-        <span>Drama</span>
-      </div>
-      <div class="category-item">
-        <img src="icons/comedy.svg" alt="Comedy" />
-        <span>Comedy</span>
-      </div>
-      <div class="category-item">
-        <img src="icons/horror.svg" alt="Horror" />
-        <span>Horror</span>
-      </div>
-      <div class="category-item">
-        <img src="icons/scifi.svg" alt="Sci-Fi" />
-        <span>Sci-Fi</span>
-      </div>
+  <nav>
+    <ul id="categoryList" class="category-list">
+      <li data-category="popular" class="active">Popular</li>
+      <li data-category="top_rated">Top Rated</li>
+      <li data-category="upcoming">Upcoming</li>
+    </ul>
+  </nav>
+
+  <section id="movieContainer" class="movie-container"></section>
+
+  <div id="lockerModal" class="locker-modal">
+    <div class="locker-content">
+      <span id="closeModal" class="close">&times;</span>
+      <p>Please subscribe or login to watch this movie.</p>
     </div>
-  </section>
+  </div>
 
-  <main class="content">
-    <h2>Welcome to WatchRealm</h2>
-    <p>Stream the best movies online in high quality. Browse, discover, and enjoy!</p>
-    <a href="#" class="watch-btn">Browse Movies</a>
-  </main>
+  <template id="movieTemplate">
+    <div class="movie-item">
+      <img class="poster" src="" alt="Movie poster" />
+      <h3 class="title"></h3>
+      <p class="year"></p>
+      <button class="watch-btn">Watch Now</button>
+    </div>
+  </template>
 
-  <footer>
-    <p>&copy; 2025 WatchRealm. All rights reserved.</p>
-  </footer>
+  <script src="app.js"></script>
 </body>
 </html>
