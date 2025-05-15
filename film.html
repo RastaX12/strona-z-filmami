@@ -3,42 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WatchRealm - Movie Details</title>
+  <title>WatchRealm – Movie Streaming</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header class="main-header">
+    <h1 class="site-logo">Watch<span>Realm</span></h1>
+  </header>
 
-<header id="site-header">
-  <div class="logo">
-    <svg width="40" height="40" viewBox="0 0 24 24" fill="#ff3d00" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-      <path d="M8 5v14l11-7z"/>
-    </svg>
-    <h1>Watch<span>Realm</span></h1>
-  </div>
-</header>
+  <section class="categories">
+    <h2>Categories</h2>
+    <div class="categories-container">
+      <div class="category-item">
+        <img src="icons/action.svg" alt="Action" />
+        <span>Action</span>
+      </div>
+      <div class="category-item">
+        <img src="icons/drama.svg" alt="Drama" />
+        <span>Drama</span>
+      </div>
+      <div class="category-item">
+        <img src="icons/comedy.svg" alt="Comedy" />
+        <span>Comedy</span>
+      </div>
+      <div class="category-item">
+        <img src="icons/horror.svg" alt="Horror" />
+        <span>Horror</span>
+      </div>
+      <div class="category-item">
+        <img src="icons/scifi.svg" alt="Sci-Fi" />
+        <span>Sci-Fi</span>
+      </div>
+    </div>
+  </section>
 
-<main id="movie-container">
-  <img id="poster" src="" alt="Movie Poster" />
+  <main class="content">
+    <h2>Welcome to WatchRealm</h2>
+    <p>Stream the best movies online in high quality. Browse, discover, and enjoy!</p>
+    <a href="#" class="watch-btn">Browse Movies</a>
+  </main>
 
-  <div id="details">
-    <h1 id="title">Loading...</h1>
-    <p id="tagline" class="tagline"></p>
-
-    <p><strong>Release Date:</strong> <span id="release-date"></span></p>
-    <p><strong>Runtime:</strong> <span id="runtime"></span> minutes</p>
-    <p><strong>Genres:</strong> <span id="genres"></span></p>
-    <p><strong>Rating:</strong> <span id="rating"></span> / 10</p>
-    <p><strong>Votes:</strong> <span id="vote-count"></span></p>
-
-    <section>
-      <h2>Overview</h2>
-      <p id="overview"></p>
-    </section>
-
-    <button id="watch-btn">Watch Now</button>
-  </div>
-</main>
-
-<script src="film.js"></script>
+  <footer>
+    <p>&copy; 2025 WatchRealm. All rights reserved.</p>
+  </footer>
 </body>
 </html>
