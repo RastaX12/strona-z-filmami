@@ -26,10 +26,23 @@ body {
   font-weight: bold;
   color: white;
   letter-spacing: 1px;
+
+  /* czarna obwódka (kontur) */
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
 }
 
 .site-logo span {
-  color: #ff3c00; /* kinowy pomarańcz */
+  color: #ff3c00;
+
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
 }
 
 /* Main content */
